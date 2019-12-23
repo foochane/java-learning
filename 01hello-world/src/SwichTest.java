@@ -13,7 +13,6 @@ public class SwichTest {
 //                break;
             default:
                 System.out.println("不知道");
-                System.out.println();
         }
     }
 
