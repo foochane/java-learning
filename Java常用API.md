@@ -1,3 +1,7 @@
+[TOC]
+
+
+
 API(Application Programming Interface)，应用程序编程接口。Java API是一本程序员的 字典 ，是JDK中提供给我们使用的类的说明文档。这些类将底层的代码实现封装了起来，我们不需要关心这些类是如何实现的，只需要学习这些类如何使用即可。所以我们可以通过查询API的方式，来学习Java提供的类，并得知如何使用它们。
 
 
@@ -134,7 +138,7 @@ ArrayList对象不能存储基本类型，只能存储引用类型的数据。�
 
 
 
-## 2 String类
+## 3 String类
 
 `java.lang.String` 类代表字符串。Java程序中所有的字符串文字（例如 "abc" ）都可以被看作是实现此类的实例。
 
@@ -355,4 +359,133 @@ for (int i = 0; i < array3.length; i++) {
 
 - split方法的参数其实是一个“正则表达式”
 - 如果按照英文句点“.”进行切分，必须写`"\\."`（两个反斜杠）
+
+
+
+## 4  Arrays类
+
+`java.util.Arrays `类包含用来操作数组的各种方法，比如排序和搜索等。**其所有方法均为静态方法**。
+
+
+
+### 4.1 toString
+
+
+
+- `public static String toString(int[] a) `：返回指定数组内容的字符串表示形式。
+
+
+
+示例：
+
+```java
+public static void main(String[] args) {
+  // 定义int 数组
+  int[] arr  =  {2,34,35,4,657,8,69,9};
+  // 打印数组,输出地址值
+  System.out.println(arr); // [I@2ac1fdc4
+  // 数组内容转为字符串
+  String s = Arrays.toString(arr);
+  // 打印字符串,输出内容
+  System.out.println(s); // [2, 34, 35, 4, 657, 8, 69, 9]
+}
+```
+
+
+
+### 4.2 sort
+
+
+
+- `public static void sort(int[] a) `：对指定的 int 型数组按数字升序进行排序。
+
+示例：
+
+```java
+public static void main(String[] args) {
+  // 定义int 数组
+  int[] arr  =  {24, 7, 5, 48, 4, 46, 35, 11, 6, 2};
+  System.out.println("排序前:"+ Arrays.toString(arr)); // 排序前:[24, 7, 5, 48, 4, 46, 35, 11, 6,
+2]
+  // 升序排序
+  Arrays.sort(arr);
+  System.out.println("排序后:"+ Arrays.toString(arr));// 排序后:[2, 4, 5, 6, 7, 11, 24, 35, 46,
+48]
+}
+```
+
+
+
+备注：
+1. 如果是数值，sort默认按照升序从小到大
+2. 如果是字符串，sort默认按照字母升序
+3. 如果是自定义的类型，那么这个自定义的类需要有Comparable或者Comparator接口的支持。
+
+## 5  Math类
+
+`java.lang.Math` 类包含用于执行基本数学运算的方法，如初等指数、对数、平方根和三角函数。类似这样的工具类，其所有方法均为静态方法，并且不会创建对象，调用起来非常简单。
+
+### 5.1 绝对值
+
+- `public static double abs(double a) `：返回 double 值的绝对值。
+
+```java
+double d1 = Math.abs(‐5); //d1的值为5
+double d2 = Math.abs(5); //d2的值为5
+```
+
+
+
+### 5.2 向上取整
+
+
+
+- `public static double ceil(double a) `：返回大于等于参数的最小的整数。
+
+```java
+double d1 = Math.ceil(3.3); //d1的值为 4.0
+double d2 = Math.ceil(‐3.3); //d2的值为 ‐3.0
+double d3 = Math.ceil(5.1); //d3的值为 6.0
+```
+
+
+
+
+
+### 5.3 向下取整
+
+- `public static double floor(double a)`：返回小于等于参数最大的整数。
+
+```java
+double d1 = Math.floor(3.3); //d1的值为3.0
+double d2 = Math.floor(‐3.3); //d2的值为‐4.0
+double d3 = Math.floor(5.1); //d3的值为 5.0
+```
+
+
+
+### 5.4 四舍五入
+
+- `public static long round(double a)` ：返回最接近参数的 long。(相当于四舍五入方法)
+
+
+
+```java
+long d1 = Math.round(5.5); //d1的值为6.0
+long d2 = Math.round(5.4); //d2的值为5.0
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

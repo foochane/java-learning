@@ -985,19 +985,250 @@ public class Student {
 
 
 
+## 14  static关键字
+
+关于  static 关键字的使用，它可以用来修饰的**成员变量**和**成员方法**，被修饰的成员是属于类的，而不是单单是属
+于某个对象的。也就是说，既然属于类，就可以不靠创建对象来调用了。
+
+
+
+### 14.1 类变量
+
+当  static 修饰**成员变量**时，该变量称为**类变量**。该类的每个对象都共享同一个类变量的值。任何对象都可以更改该类变量的值，但也可以在不创建该类的对象的情况下对类变量进行操作。
+
+格式：
+
+```java
+static 数据类型 变量名；
+```
+
+
+
+示例：
+
+创建Student类
+
+```java
+public class Student {
+    private int id;
+    private String name;
+    private int age;
+    static String room;
+    private static int idCounter = 0; //学号计数器，每当new了一个新对象的时候，计数器++
+
+    public Student(){
+        this.id = ++idCounter;
+    }
+
+    public Student(String name,int age) {
+        this.id = ++idCounter;
+        this.name = name;
+        this.age = age;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+}
+
+```
+
+
+
+调用：
+
+```java
+public class StaticDemo {
+    public static void main(String[] args) {
+
+        // 首先设置一下教室，这是静态的东西，应该通过类名称进行调用
+        Student.room = "101教室";
+
+        Student stu1 = new Student("xiaoming",18);
+        System.out.println("id："+ stu1.getId()+",姓名："+ stu1.getName()+"，年龄："+stu1.getAge()+",教室："+Student.room);
+        System.out.println("=====================");
+
+        Student stu2 = new Student("xiaohong",19);
+        System.out.println("id："+ stu2.getId()+",姓名："+ stu2.getName()+"，年龄："+stu2.getAge()+",教室："+Student.room);
+        System.out.println("=====================");
+
+        Student stu3 = new Student("xiaowang",22);
+        System.out.println("id："+ stu3.getId()+",姓名："+ stu3.getName()+"，年龄："+stu3.getAge()+",教室："+Student.room);
+        System.out.println("=====================");
+
+    }
+}
+```
+
+
+
+**类变量的修改还调用一般直接使用类名**
+
+
+
+### 14.2  静态方法
+
+当 static 修饰成员方法时，该方法称为**类方法** 。**静态方法在声明中有 static ，建议使用类名来调用，而不需要创建类的对象。**调用方式非常简单。
+
+
+
+使用 static关键字修饰的成员方法，习惯称为**静态方法**。
+
+
+
+格式：
+
+```java
+修饰符 static 返回值类型 方法名 (参数列表){
+// 执行语句     
+}
+```
+
+
+
+示例： 在Student类中定义静态方法
+
+```java
+public static void showNum() {
+  System.out.println("num:" +  numberOfStudent);
+}
+```
 
 
 
 
 
+调用格式：
+
+被static修饰的成员可以并且**建议通过类名直接访问**。虽然也可以通过对象名访问静态成员，原因即多个对象均属于一个类，共享使用同一个静态成员，但是不建议，会出现警告信息。
+
+格式：
+
+```java
+// 访问类变量
+类名.类变量名；
+    
+// 调用静态方法
+类名.静态方法名(参数)；
+```
+
+
+
+示例：
+
+```java
+//访问静态变量(类变量)
+System.out.println(Student.room);
+
+//访问静态方法
+Student.showNum();
+```
+
+
+
+**静态方法调用的注意事项：**
+
+- 静态方法可以直接访问类变量和静态方法。
+- 静态方法 不能直接访问普通成员变量或成员方法。反之成员方法可以直接访问类变量或静态方法。
+- 静态方法中，不能使用 this关键字。
+
+
+
+### 14.3  静态原理图解
+
+static 修饰的内容：
+
+- 是随着类的加载而加载的，且只加载一次。
+- 存储于一块固定的内存区域（静态区），所以，可以直接被类名调用。
+- 它优先于对象存在，所以，可以被所有对象共享。
+
+
+
+![静态的内存图](image\静态的内存图.png)
+
+
+
+### 14.4  静态代码块
+
+静态代码块 ：定义在成员位置，使用static修饰的代码块{ }。
+
+- 位置：类中方法外。
+- 执行：**随着类的加载而执行且执行一次，优先于 main方法和构造方法的执行**。
+
+
+
+格式：
+
+```java
+public class ClassName{
+  static {
+    // 执行语句
+  }
+}
+```
 
 
 
 
 
+示例：
+
+```java
+public class Person {
+
+    static {
+        System.out.println("静态代码块执行！");
+    }
+
+    public Person() {
+        System.out.println("构造方法执行！");
+    }
+
+}
+```
 
 
 
+调用Person类
+
+```java
+/*
+静态代码块特点：当第一次用到本类时，静态代码块执行唯一的一次。
+静态内容总是优先于非静态，所以静态代码块比构造方法先执行。
+
+静态代码块的典型用途：用来一次性地对静态成员变量进行赋值。
+ */
+public class Demo04Static {
+
+    public static void main(String[] args) {
+        
+        //静态代码块先执行，且只执行一次，构造方法执行了两次
+        Person one = new Person();
+        Person two = new Person();
+    }
+
+}
+```
 
 
 
