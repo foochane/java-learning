@@ -1,7 +1,19 @@
-[toc]
+---
+title: Java基础概念、知识点整理
+date: 2019-12-15 22:00:00
+urlname: 2019121501
+categories: Java
+tags:
+  - Java
+author: foochane
+toc: true
+mathjax: true
+top: false
+cover: false
+---
+
 
 ## 1 基础概念
-
 
 
 ### 1.1 二进制
@@ -22,7 +34,7 @@
 
 虚拟机是一种抽象化的计算机，通过在实际的计算机上仿真模拟各种计算机功能来实现的。Java虚拟机（Java Virtual Machine，JVM ）有自己完善的硬体架构，如处理器、堆栈、寄存器等，还具有相应的指令系统。Java虚拟机屏蔽了与具体操作系统平台相关的信息，使得Java程序只需生成在Java虚拟机上运行的目标代码(字节码)，就可以在多种平台上不加修改地运行。
 
-所谓的java虚拟机，就是一台虚拟的机器。它是一款软件，用来执行一系列虚拟计算机指令，大体上虚拟机可以分为系统虚拟机和程序虚拟机。visual Box、VMWare就属于系统虚拟机。他们完全是对物理计算机的仿真，提供一个可运行完整操作系统的软件平台。而java虚拟机就是典型程序虚拟机，它专门为执行单个计算机程序而设计，在java虚拟机中执行的指令我们称之为java字节码指令。java发展到今天，出现了很多虚拟机，最初sun使用的叫Classic的java虚拟机，到现在使用最广泛的是HotSpot虚拟机，除了sun以外还有BEA的JRockit,目前JRockit和HotSpot都被甲骨文公司收入旗下，大有整合的趋势。
+所谓的java虚拟机，就是一台虚拟的机器。它是一款软件，用来执行一系列虚拟计算机指令，大体上虚拟机可以分为系统虚拟机和程序虚拟机。Visual Box、VMWare就属于系统虚拟机。他们完全是对物理计算机的仿真，提供一个可运行完整操作系统的软件平台。而java虚拟机就是典型程序虚拟机，它专门为执行单个计算机程序而设计，在java虚拟机中执行的指令我们称之为java字节码指令。java发展到今天，出现了很多虚拟机，最初sun使用的叫Classic的java虚拟机，到现在使用最广泛的是HotSpot虚拟机，除了sun以外还有BEA的JRockit,目前JRockit和HotSpot都被甲骨文公司收入旗下，大有整合的趋势。
 
 任何软件的运行，都必须要运行在操作系统之上，而我们用Java编写的软件可以运行在任何的操作系
 统上，这个特性称为Java语言的**跨平台特性**。该特性是由JVM实现的，我们编写的程序运行在JVM上，而JVM运行在操作系统上。
@@ -31,8 +43,8 @@
 
 ### 1.3 JRE  和 JDK
 
-- JRE  (Java Runtime Environment) ：是Java程序的运行时环境，包含 JVM 和运行时所需要的 核心类库 。
--  JDK (Java Development Kit)：是Java程序开发工具包，包含 JRE 和开发人员使用的工具。
+- JRE（Java Runtime Environment）：是Java程序的运行时环境，包含 JVM 和运行时所需要的 核心类库 。
+-  JDK（Java Development Kit)：是Java程序开发工具包，包含 JRE 和开发人员使用的工具。
 
 
 我们想要运行一个已有的Java程序，那么只需安装 JRE 即可。我们想要开发一个全新的Java程序，那么必须安装 JDK 。
@@ -79,8 +91,8 @@ Java的数据类型分为两大类：
 | 字符型       | char           | 2个字节  | 0-65535               |
 | 布尔类型     | boolean        | 1个字节  | true，false           |
 
-> long类型：建议数据后加L表示
-> float类型：建议数据后加F表示
+> `long`类型：建议数据后加`L`表示
+> `float`类型：建议数据后加`F`表示
 
 
 
@@ -97,7 +109,7 @@ Java的数据类型分为两大类：
 
 - 特点：代码需要进行特殊的格式处理，不能自动完成。
 
-- 格式：范围小的类型 范围小的变量名 = (范围小的类型) 原本范围大的数据;
+- 格式：范围小的类型 范围小的变量名 =（范围小的类型) 原本范围大的数据;
 
 
 
@@ -105,9 +117,9 @@ Java的数据类型分为两大类：
 
 1. 强制类型转换一般不推荐使用，因为有可能发生精度损失、数据溢出。
 
-2. byte/short/char这三种类型都可以发生数学运算，例如加法“+”.
-3. byte/short/char这三种类型在运算的时候，都会被首先**提升成为int类型**，然后再计算。
-4. boolean类型不能发生数据类型转换
+2. `byte/short/char`这三种类型都可以发生数学运算，例如加法“`+`”.
+3. `byte/short/char`这三种类型在运算的时候，都会被首先**提升成为int类型**，然后再计算。
+4. `boolean`类型不能发生数据类型转换
 
 
 
@@ -203,8 +215,7 @@ public static void main(String[] args) {
 
 ### 1.7  JShell脚本工具
 
-JShell脚本工具是JDK9的新特性,当我们编写的代码非常少的时候，而又不愿意编写类，main方法，也不愿意去编译和运
-行，这个时候可以使用JShell工具。
+JShell脚本工具是JDK9的新特性,当我们编写的代码非常少的时候，而又不愿意编写类，main方法，也不愿意去编译和运行，这个时候可以使用JShell工具。
 
 启动JShell工具，在DOS命令行直接输入JShell命令。
 
@@ -225,12 +236,12 @@ JShell脚本工具是JDK9的新特性,当我们编写的代码非常少的时候
 | Shift+F6                 | 同时修改不同地方的同一个量             |
 | 输入sout                 | System.out.println();                  |
 | 输入psvm                 | public static void main(String[] args) |
-| 输入5.fori               | for (int i = 0; i < 5; i++)            |
+| 输入5.fori               | for（int i = 0; i < 5; i++)            |
 | 输入arr.fori或者arr.forr | for循环变量数组                        |
 
 
 
-## 2 三大语句
+## 2 流程控制语句
 
 
 
@@ -360,7 +371,6 @@ public static void main(String[] args) {
 }
 ```
 
-### 
 
 #### continue
 
@@ -406,12 +416,14 @@ public static void main(String[] args) {
 
 ```java
 数组存储的数据类型[] 数组名字 = new 数组存储的数据类型[长度];
+
 ```
 
 示例：
 
 ```java
 int[] arr = new int[3];
+
 ```
 
 
@@ -422,12 +434,14 @@ int[] arr = new int[3];
 
 ```java
 数据类型[] 数组名 = new 数据类型[]{元素1,元素2,元素3...};
+
 ```
 
 示例：
 
 ```java
 int[] arr = new int[]{1,2,3,4,5};
+
 ```
 
 
@@ -440,12 +454,14 @@ int[] arr = new int[]{1,2,3,4,5};
 
 ```java
 数据类型[] 数组名 = {元素1,元素2,元素3...};
+
 ```
 
 示例：
 
 ```java
 int[] arr = {1,2,3,4,5};
+
 ```
 
 
@@ -465,7 +481,8 @@ int[] arr = {1,2,3,4,5};
 
 示例：
 
-```java
+``` java
+
 public static void main(String[] args) {
     //定义存储int类型数组，赋值元素1，2，3，4，5
     int[] arr = {1,2,3,4,5};
@@ -477,6 +494,7 @@ public static void main(String[] args) {
     //直接输出数组0索引元素
     System.out.println(arr[0]);
 }
+
 ```
 
 #### 数组取最大值
@@ -500,8 +518,6 @@ public static void main(String[] args) {
     System.out.println("数组最大值是： " + max);
 }
 ```
-
-
 
 
 
@@ -544,23 +560,23 @@ Java虚拟机要运行程序，必须要对内存进行空间的分配和管理�
 
 **Java的内存需要划分成为5个部分:**
 
-1. 栈(Stack) :存放的都是方法中的局部变量。**方法的运行一定要在栈当中运行。**
+1. 栈（Stack） :存放的都是方法中的局部变量。**方法的运行一定要在栈当中运行。**
    - 局部变量:方法的参数，或者是方法{}内部的变量
    - 作用域:一旦超出作用域，立刻从栈内存当中消失。
 
-2. 堆(Heap) :凡是new出来的东西，都在堆当中。
+2. 堆（Heap）:凡是new出来的东西，都在堆当中。
    - 堆内存里面的东西都有一一个地址值: 16进制
    - 堆内存里面的数据，都有默认值。规则:
-     - 如果是整数  默认为0
-     - 如果是浮点数  默认为0.0
-     - 如果是字符 默认为'\u0000'
-     - 如果是布尔  默认为false
-     - 如果是引用类型  默认为null
-3. 方法区(Method Area) :存储class相关信息，包含方法的信息。
+     - 如果是整数  默认为`0`
+     - 如果是浮点数  默认为`0.0`
+     - 如果是字符 默认为`'\u0000'`
+     - 如果是布尔  默认为`false`
+     - 如果是引用类型  默认为`null`
+3. 方法区（Method Area)）:存储class相关信息，包含方法的信息。
 
-4. 本地方法栈(Native Method Stack) :与操作系统相关。
+4. 本地方法栈（Native Method Stack)）:与操作系统相关。
 
-5. 寄存器(pc Register) :与CPU相关。
+5. 寄存器（PC Register） :与CPU相关。
 
 
 
@@ -592,7 +608,7 @@ public static void main(String[] args) {
 3. JVM将内存地址赋值给变量 arr。**变量arr保存的是数组内存中的地址，而不是一个具体的数值，因此数组为引用数据类型。**
 4. 根据数组索引给数组的3个元素赋值，分布赋值为5，6，7。然后进行打印。
 
-![数组内存图](./image/数组内存图.jpg)
+![数组内存图](https://foochane.cn/images/2019/015.jpg)
 
 
 
@@ -691,6 +707,7 @@ public class Student {
 
 ```java
 类名 对象名 = new 类名();
+
 ```
 
 
@@ -735,12 +752,12 @@ public class Test01_Student {
 成员变量的默认值
 
 - 基本类型：
-  - 整数（byte，short，int，long）：0
-  - 浮点数（float，double）：0.0
-  - 字符（char）： '\u0000'
-  - 布尔（boolean）：false
+  - 整数（byte，short，int，long）：`0`
+  - 浮点数（float，double）：`0.0`
+  - 字符（char）： `'\u0000'`
+  - 布尔（boolean）：`false`
 
-	- 引用类型：数组，类，接口 null
+	- 引用类型：数组，类，接口 `null`
 
 
 
@@ -762,7 +779,7 @@ public class Car{
 
 - 在类中的位置不同
   - 成员变量：类中，方法外
-  -  局部变量：方法中或者方法声明上 (形式参数)
+  -  局部变量：方法中或者方法声明上（形式参数)
 - 作用范围不一样
   - 成员变量：类中
   - 局部变量：方法中
@@ -789,14 +806,15 @@ public class Car{
 ### 5.1 private关键字
 
 private的含义
-1. private是一个权限修饰符，代表最小权限。
+1. `private`是一个权限修饰符，代表最小权限。
 2. 可以修饰成员变量和成员方法。
-3. 被private修饰后的成员变量和成员方法，只在本类中才能访问。
+3. 被`private`修饰后的成员变量和成员方法，只在本类中才能访问。
 
 private的使用格式：
 
 ```java
-private 数据类型 变量名 ；
+private 数据类型 变量名;
+
 ```
 
 
@@ -839,12 +857,13 @@ public class Student {
 
 this的含义this代表所在类的当前对象的引用（地址值），即对象自己的引用。
 
-**方法被哪个对象调用，方法中的this就代表那个对象。即谁在调用，this就代表谁。**
+**方法被哪个对象调用，方法中的`this`就代表那个对象。即谁在调用，this就代表谁。**
 
 this使用格式:
 
 ```java
-this.成员变量名；
+this.成员变量名;
+
 ```
 
 
@@ -1061,7 +1080,7 @@ t.printName(); // name = 小明        
   - 如果子类父类中出现不重名的成员方法，这时的调用是没有影响的。
   - 对象调用方法时，会先在子类中查找有没有对应的方法，若子类中存在就会执行子类中的方法，若子类中不存在就会执行父类中相应的方法。
 - 成员方法重名 ——**重写(Override)**
-  - 如果子类父类中出现重名的成员方法，这时的访问是一种特殊情况，叫做方法重写 (Override)。
+  - 如果子类父类中出现重名的成员方法，这时的访问是一种特殊情况，叫做方法重写（Override)。
 
 
 
@@ -1103,7 +1122,7 @@ Java只支持单继承，不支持多继承。
 
 
 
-### 6.3 重写(Override)
+### 6.3 重写（Override）
 
 方法重写 ：子类中出现与父类一模一样的方法时（返回值类型，方法名和参数列表都相同），会出现覆盖效果，也称为重写或者复写。声明不变，重新实现。
 
@@ -1250,7 +1269,8 @@ super(...)    ‐‐    父类的构造方法
 格式：
 
 ```java
-修饰符 abstract 返回值类型 方法名 (参数列表)；
+修饰符 abstract 返回值类型 方法名 (参数列表);
+
 ```
 
 
@@ -1258,7 +1278,8 @@ super(...)    ‐‐    父类的构造方法
 示例：
 
 ```java
-public abstract void run()；
+public abstract void run();
+
 ```
 
 
@@ -2011,6 +2032,7 @@ interface D extends A,B{
 
 ```java
 static 数据类型 变量名；
+
 ```
 
 
@@ -2175,7 +2197,7 @@ static 修饰的内容：
 
 
 
-![静态的内存图](./image/静态的内存图.png)
+![静态的内存图](https://foochane.cn/images/2019/016.png)
 
 
 
@@ -2368,10 +2390,10 @@ public class User {
 
 | 类                     | public | protected | default（空的） | private |
 | ---------------------- | ------ | --------- | --------------- | ------- |
-| 同一类中               | √      | √         | √               | √       |
-| 同一包中(子类与无关类) | √      | √         | √               |         |
-| 不同包的子类           | √      | √         |                 |         |
-| 不同包中的无关类       | √      |           |                 |         |
+| 同一类中               | YES    | YES       | YES             | YES     |
+| 同一包中(子类与无关类) | YES    | YES       | YES             | NO      |
+| 不同包的子类           | YES    | YES       | NO              | NO      |
+| 不同包中的无关类       | YES    | NO        | NO              | NO      |
 
 可见，public具有最大权限。private则是最小权限。
 
@@ -2426,6 +2448,7 @@ class Car { //外部类
 
 ```java
 外部类名.内部类名 对象名 = new 外部类型().new 内部类型()；
+
 ```
 
 访问演示，代码如下：
@@ -2482,6 +2505,37 @@ public class InnerDemo {
 
 内部类仍然是一个独立的类，在编译之后会内部类会被编译成独立的 .class文件，但是前面冠以外部类的类名和`$`符号 。
 比如，`Person$Heart.class`
+
+
+
+内部类重名变量访问：
+
+```java
+public class Outer {
+    int num = 10;
+    public  class Inner{
+        int num = 20;
+        public void methodInner(){
+            int num = 30;
+            System.out.println(num);
+            System.out.println(this.num);
+            System.out.println(Outer.this.num);
+        }
+    }
+
+    public static void main(String[] args) {
+        Outer.Inner inner =  new Outer().new Inner();
+        inner.methodInner();
+    }
+}
+
+输出：
+30
+20
+10
+```
+
+
 
 ### 12.2  匿名内部类
 
