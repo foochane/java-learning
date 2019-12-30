@@ -30,7 +30,6 @@ public class StringSortDemo {
         }
         System.out.println(System.currentTimeMillis()-t2);
 
-
 //        System.out.println(list);
 //        Collections.sort(list);
 //        System.out.println(list);

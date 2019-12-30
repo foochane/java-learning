@@ -1,5 +1,5 @@
 ---
-title: Java基础概念、知识点整理
+title: Java学习笔记（一）：基础概念和语法
 date: 2019-12-15 22:00:00
 urlname: 2019121501
 categories: Java

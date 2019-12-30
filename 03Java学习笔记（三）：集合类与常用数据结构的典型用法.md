@@ -1,5 +1,5 @@
 ---
-title: Java集合类与常用数据结构的典型用法
+title: Java学习笔记（三）：集合类与常用数据结构的典型用法
 date: 2019-12-28 13:31
 urlname: 2019122801
 categories: Java
