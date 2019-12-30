@@ -22,7 +22,7 @@ cover: false
 
 异常，就是不正常的意思。在生活中:医生说,你的身体某个部位有异常,该部位和正常相比有点不同,该部位的功能将受影响.在程序中的意思就是：
 
-* **异常** ：指的是程序在执行过程中，出现的非正常的情况，最终会导致JVM的非正常停止。
+**异常** ：指的是程序在执行过程中，出现的非正常的情况，最终会导致JVM的非正常停止。
 
 在Java等面向对象的编程语言中，异常本身是一个类，产生异常就是创建异常对象并抛出了一个异常对象。Java处理异常的方式是中断处理。
 
@@ -32,7 +32,7 @@ cover: false
 
 异常机制其实是帮助我们**找到**程序中的问题，异常的根类是`java.lang.Throwable`，其下有两个子类：`java.lang.Error`与`java.lang.Exception`，平常所说的异常指`java.lang.Exception`。
 
-![](C:/Users/Administrator/AppData/Local/Temp/HZ$D.493.2904/HZ$D.493.2905/16.【异常、线程】-笔记/就业班-day05-异常、线程/img/异常体系.png)
+![](https://raw.githubusercontent.com/foochane/java-learning/master/image/异常体系.png)
 
 **Throwable体系：**
 
@@ -53,7 +53,7 @@ cover: false
 
 ***出现异常,不要紧张,把异常的简单类名,拷贝到API中去查。***
 
-![](C:/Users/Administrator/AppData/Local/Temp/HZ$D.493.2904/HZ$D.493.2905/16.【异常、线程】-笔记/就业班-day05-异常、线程/img/简单的异常查看.bmp)
+![](https://raw.githubusercontent.com/foochane/java-learning/master/image/简单的异常查看.bmp)
 
 ### 1.3 异常分类
 
@@ -64,7 +64,7 @@ cover: false
 * **编译时期异常**:checked异常。在编译时期,就会检查,如果没有处理异常,则编译失败。(如日期格式化异常)
 * **运行时期异常**:runtime异常。在运行时期,检查异常.在编译时期,运行异常不会编译器检测(不报错)。(如数学异常)
 
-​    ![](C:/Users/Administrator/AppData/Local/Temp/HZ$D.493.2904/HZ$D.493.2905/16.【异常、线程】-笔记/就业班-day05-异常、线程/img/异常的分类.png)
+​    ![](https://raw.githubusercontent.com/foochane/java-learning/master/image/异常的分类.png)
 
 ### 1.4     异常的产生过程解析
 
@@ -97,7 +97,7 @@ public class ExceptionDemo {
 
 上述程序执行过程图解：
 
- ![](C:/Users/Administrator/AppData/Local/Temp/HZ$D.493.2904/HZ$D.493.2905/16.【异常、线程】-笔记/就业班-day05-异常、线程/img/异常产生过程.png)
+ ![](https://raw.githubusercontent.com/foochane/java-learning/master/image/异常产生过程.png)
 
 ## 2 异常的处理
 
@@ -343,7 +343,7 @@ public class TryCatchDemo4 {
 
 > 当只有在try或者catch中调用退出JVM的相关方法,此时finally才不会执行,否则finally永远会执行。
 
-![](C:/Users/Administrator/AppData/Local/Temp/HZ$D.493.2904/HZ$D.493.2905/16.【异常、线程】-笔记/就业班-day05-异常、线程/img/死了都要try.bmp)
+![](https://raw.githubusercontent.com/foochane/java-learning/master/image/死了都要try.bmp)
 
 ### 2.5   异常注意事项
 
