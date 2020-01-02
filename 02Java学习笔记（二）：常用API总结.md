@@ -1145,7 +1145,7 @@ i = i + 5;//等号右边：将i对象转成基本数值(自动拆箱) i.intValue
 
 1. 基本类型的值+"" （最简单的一种）
 
-```
+```java
 基本类型直接与””相连接即可；如：34+""
 
 ```
@@ -1202,8 +1202,6 @@ public class Demo18WrapperParse {
 
 > 注意:如果字符串参数的内容无法正确转换为对应的基本类型，则会抛出`java.lang.NumberFormatException`异常。
 >
-
-
 
 
 
@@ -1326,7 +1324,7 @@ public class Demo01File {
           System.out.println("文件构造路径:"+f.getPath());
           System.out.println("文件名称:"+f.getName());
           System.out.println("文件长度:"+f.length()+"字节");
-
+  
           File f2 = new File("d:/aaa");     
           System.out.println("目录绝对路径:"+f2.getAbsolutePath());
           System.out.println("目录构造路径:"+f2.getPath());
@@ -1339,7 +1337,7 @@ public class Demo01File {
   文件构造路径:d:\aaa\bbb.java
   文件名称:bbb.java
   文件长度:636字节
-
+  
   目录绝对路径:d:\aaa
   目录构造路径:d:\aaa
   目录名称:aaa
@@ -1470,3 +1468,125 @@ public class FileFor {
 > 小贴士：
 >
 > 调用listFiles方法的File对象，表示的必须是实际存在的目录，否则返回null，无法进行遍历。
+
+### 11.5 文件过滤器
+
+ 在File类中有两个和ListFiles重载的方法,方法的参数传递的就是过滤器
+
+- `File[] listFiles(FileFilter filter)`
+
+  - java.io.FileFilter接口:用于抽象路径名(File对象)的过滤器
+    - 作用:用来过滤文件(File对象)
+    - 抽象方法:`boolean accept(File pathname)`,用来过滤文件的方法，测试指定抽象路径名是否应该包含在某个路径名列表中。
+    - 参数:File pathname:使用ListFiles方法遍历目录,得到的每一个文件对象
+
+-  `File[] listFiles(FilenameFilter filter)`
+
+  - java.io.FilenameFilter接口:实现此接口的类实例可用于过滤器文件名。
+
+    - 作用:用于过滤文件名称
+
+    - 抽象方法:`boolean accept(File dir, String name)` ，用来过滤文件的方法，测试指定文件是否应该包含在某一文件列表中。
+
+    - 参数:
+
+      - File dir:构造方法中传递的被遍历的目录
+      - String name:使用ListFiles方法遍历目录,获取的每一个文件/文件夹的名称
+
+      
+
+  注意:
+        两个过滤器接口是没有实现类的,需要我们自己写实现类,重写过滤的方法accept,在方法中自己定义过滤的规则
+
+
+
+示例：
+
+获取某目录下的所有`.java`文件
+
+
+
+1. 使用 `FileFilter接口`
+
+```java
+public class FileDemo {
+    public static void main(String[] args) {
+
+        File file = new File("E:\\code");
+        getAllFiles(file);
+
+    }
+
+    public static void  getAllFiles( File file){
+
+        //1 直接重载accept方法
+//        File[] files = file.listFiles(new FileFilter() {
+//            @Override
+//            public boolean accept(File pathname) {
+//                return pathname.isDirectory() || pathname.getName().toLowerCase().endsWith(".java");
+//            }
+//        });
+
+        // 2 使用lambda表达式
+//        File[] files = file.listFiles((File pathname)->{
+//                return pathname.isDirectory() || pathname.getName().toLowerCase().endsWith(".java");
+//            }
+//        );
+
+        // 3 lambda表达式简化
+//        File[] files = file.listFiles((File pathname)->pathname.isDirectory() || pathname.getName().toLowerCase().endsWith(".java"));
+
+        // 4 lambda表达式进一步简化
+        File[] files = file.listFiles((pathname)->pathname.isDirectory() || pathname.getName().toLowerCase().endsWith(".java"));
+
+        for(File f :files){
+            if(f.isDirectory()){
+                getAllFiles(f);
+            }else {
+                System.out.println(f.toString());
+            }
+
+        }
+
+    }
+}
+
+```
+
+
+
+2. 使用`FilenameFilter接口`
+
+```java
+public class FileDemo {
+    public static void main(String[] args) {
+
+        File file = new File("E:\\code");
+        getAllFiles(file);
+
+    }
+
+    public static void  getAllFiles( File file){
+        // 1 直接重载accept方法
+//        File[] files = file.listFiles(new FilenameFilter() {
+//            @Override
+//            public boolean accept(File dir, String name) {
+//                return new File(dir,name).isDirectory() || name.toLowerCase().endsWith(".java");
+//            }
+//        });
+
+        // 2 使用lambda表达式
+        File[] files = file.listFiles((dir, name) -> new File(dir,name).isDirectory() || name.toLowerCase().endsWith(".java"));
+
+        for(File f :files){
+            if(f.isDirectory()){
+                getAllFiles(f);
+            }else {
+                System.out.println(f.toString());
+            }
+
+        }
+
+    }
+}
+```

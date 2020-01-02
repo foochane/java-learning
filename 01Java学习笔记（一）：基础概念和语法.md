@@ -158,8 +158,6 @@ public static void main(String[] args) {
 
 #### 赋值运算符
 
-### 
-
 | 符号 | 说明   |
 | ---- | ------ |
 | =    | 等于号 |
@@ -189,14 +187,16 @@ public static void main(String[] args) {
 | 符号       | 说明                                                         |
 | ---------- | ------------------------------------------------------------ |
 | && 短路与  | 1. 两边都是true，结果是true<br/>2. 一边是false，结果是false<br/>**短路特点：符号左边是false，右边不再运算** |
-| \|\|短路或 | 1. 两边都是false，结果是false<br/>2. 一边是true，结果是true<br/>**短路特点： 符号左边是true，右边不再运算** |
+| \|\| 短路或 | 1. 两边都是false，结果是false<br/>2. 一边是true，结果是true<br/>**短路特点： 符号左边是true，右边不再运算** |
 | ！ 取反    | 1. ! true 结果是false<br/>2. ! false结果是true               |
 
 ####  三元运算符
 
 三元运算符格式：
+```java
+数据类型 变量名 = 布尔类型表达式？结果1：结果2;
 
-` 数据类型 变量名 = 布尔类型表达式？结果1：结果2`
+```
 
 示例：
 
@@ -339,10 +339,15 @@ for(初始化表达式①; 布尔表达式②; 步进表达式④){
 ```
 
 执行流程
+
 执行顺序：①③④ >②③④>②③④…②不满足为止。
+
 ①负责完成循环变量初始化。
+
 ②负责判断是否满足循环条件，不满足则跳出循环。
+
 ③具体执行的语句
+
 ④循环后，循环变量的变化情况
 
 
@@ -482,7 +487,6 @@ int[] arr = {1,2,3,4,5};
 示例：
 
 ``` java
-
 public static void main(String[] args) {
     //定义存储int类型数组，赋值元素1，2，3，4，5
     int[] arr = {1,2,3,4,5};
@@ -560,23 +564,23 @@ Java虚拟机要运行程序，必须要对内存进行空间的分配和管理�
 
 **Java的内存需要划分成为5个部分:**
 
-1. 栈（Stack） :存放的都是方法中的局部变量。**方法的运行一定要在栈当中运行。**
+1. 栈（Stack）: 存放的都是方法中的局部变量。**方法的运行一定要在栈当中运行。**
    - 局部变量:方法的参数，或者是方法{}内部的变量
    - 作用域:一旦超出作用域，立刻从栈内存当中消失。
 
-2. 堆（Heap）:凡是new出来的东西，都在堆当中。
+2. 堆（Heap）: 凡是new出来的东西，都在堆当中。
    - 堆内存里面的东西都有一一个地址值: 16进制
    - 堆内存里面的数据，都有默认值。规则:
-     - 如果是整数  默认为`0`
-     - 如果是浮点数  默认为`0.0`
-     - 如果是字符 默认为`'\u0000'`
-     - 如果是布尔  默认为`false`
-     - 如果是引用类型  默认为`null`
-3. 方法区（Method Area)）:存储class相关信息，包含方法的信息。
+     - 如果是整数: 默认为`0`
+     - 如果是浮点数:  默认为`0.0`
+     - 如果是字符: 默认为`'\u0000'`
+     - 如果是布尔:  默认为`false`
+     - 如果是引用类型:  默认为`null`
+3. 方法区（Method Area）: 存储class相关信息，包含方法的信息。
 
-4. 本地方法栈（Native Method Stack)）:与操作系统相关。
+4. 本地方法栈（Native Method Stack）: 与操作系统相关。
 
-5. 寄存器（PC Register） :与CPU相关。
+5. 寄存器（PC Register）: 与CPU相关。
 
 
 
@@ -656,8 +660,8 @@ Java语言是一种面向对象的程序设计语言，而面向对象思想是�
   - 行为：事物能够做什么。
 -  对象 ：是一类事物的具体体现。对象是类的一个实例，必然具备该类事物的属性和行为。
 -  类与对象的关系
-  - 类是对一类事物的描述，是 抽象的。
-  - 对象是一类事物的实例，是 具体的。
+  - 类是对一类事物的描述，是**抽象的**。
+  - 对象是一类事物的实例，是**具体的**。
   - 类是对象的模板，对象是类的实体 。
 
 
@@ -757,7 +761,7 @@ public class Test01_Student {
   - 字符（char）： `'\u0000'`
   - 布尔（boolean）：`false`
 
-	- 引用类型：数组，类，接口 `null`
+- 引用类型：数组，类，接口 `null`
 
 
 
@@ -772,9 +776,6 @@ public class Car{
     }
 }
 ```
-
-
-
 
 
 - 在类中的位置不同
@@ -968,16 +969,16 @@ public class Student {
     this.age = age;
   }
   //成员方法
-  publicvoid setName(String name) {
+  public void setName(String name) {
     this.name = name;
   }
   public String getName() {
     return name;
   }
-  publicvoid setAge(int age) {
+  public void setAge(int age) {
     this.age = age;
   }
-  publicint getAge() {
+  public int getAge() {
     return age;
   }
 }
@@ -1025,38 +1026,38 @@ class 子类 extends 父类 {
  * 定义员工类Employee，做为父类
  */
 class Employee {
-String name; // 定义name属性    
-// 定义员工的工作方法    
-public void work() {    
-System.out.println("尽心尽力地工作");        
-}    
+    String name; // 定义name属性    
+    // 定义员工的工作方法    
+    public void work() {    
+        System.out.println("尽心尽力地工作");        
+    }    
 }
 /*
  * 定义讲师类Teacher 继承 员工类Employee
  */
 class Teacher extends Employee {
-// 定义一个打印name的方法    
-public void printName() {    
-System.out.println("name=" + name);        
-}    
+    // 定义一个打印name的方法    
+    public void printName() {    
+        System.out.println("name=" + name);        
+    }    
 }
 /*
  * 定义测试类
  */
 public class ExtendDemo01 {
-public static void main(String[] args) {    
-        // 创建一个讲师类对象
-Teacher t = new Teacher();        
-     
-        // 为该员工类的name属性进行赋值
-t.name = "小明";         
-     
-       // 调用该员工的printName()方法  
-t.printName(); // name = 小明        
-       
+    public static void main(String[] args) {    
+        // 创建一个讲师类对象
+        Teacher t = new Teacher();        
+             
+        // 为该员工类的name属性进行赋值
+        t.name = "小明";         
+             
+        // 调用该员工的printName()方法  
+        t.printName(); // name = 小明        
+               
        // 调用Teacher类继承来的work()方法  
        t.work();  // 尽心尽力地工作  
-}    
+    }    
 }
 ```
 
@@ -2868,10 +2869,6 @@ public class Test {
 接口作为参数时，传递它的子类对象。
 
 接口作为返回值类型时，返回它的子类对象。
-
-
-
-
 
 
 
